@@ -3,8 +3,12 @@
 Pascal's Triangle
 """
 
+
 def pascal_triangle(n):
-    """Returns a list of lists of integers representing the Pascal’s triangle of n"""
+    """
+    Returns a list of lists of integers representing
+    the Pascal’s triangle of n
+    """
     triangle = []
     for i in range(n):
         row = [1] * (i + 1)
