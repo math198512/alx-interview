@@ -10,8 +10,7 @@ def pascal_triangle(n):
     the Pascal’s triangle of n
     """
     if n <= 0:
-        triangle = []
-        return str(triangle)
+        return []
     else:
         triangle = []
         for i in range(n):
