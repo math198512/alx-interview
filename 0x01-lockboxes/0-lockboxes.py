@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 def canUnlockAll(boxes):
     n = len(boxes)  # Total number of boxes
     unlocked = [False] * n  # Track unlocked boxes
