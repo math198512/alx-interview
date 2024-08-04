@@ -1,8 +1,9 @@
 #!/usr/bin/python3
 """module documentaion"""
 
+
 def canUnlockAll(boxes):
-    """method documentation"""
+    """a method that determines if all the boxes can be opened."""
     n = len(boxes)  # Total number of boxes
     unlocked = [False] * n  # Track unlocked boxes
     unlocked[0] = True  # The first box is unlocked
