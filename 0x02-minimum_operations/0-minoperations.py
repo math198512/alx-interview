@@ -4,8 +4,9 @@ import math
 
 
 def minOperations(n):
-    """"""
+    """main function to do the task"""
     def primeFactors(n):
+        """helper function to find prime factorization of n"""
         # Print the number of two's that divide n
         primes = []
         while n % 2 == 0:
