@@ -15,8 +15,7 @@ def rec(board, i, placed_queens=None):
     n = len(board)
     if i == n and placed_queens is not None:
         print(placed_queens)
-        return 1
-
+        
     if placed_queens is None:
         placed_queens = []
     for j in range(n):
