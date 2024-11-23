@@ -1,7 +1,6 @@
 #!/usr/bin/node
 const request = require('request');
-const API_URL = 'https://swapi-api.hbtn.io/api/films/3';
-
+const API_URL = 'https://swapi-api.hbtn.io/api/films/3/';
 
 
 request(API_URL, (error, response, body) => {
