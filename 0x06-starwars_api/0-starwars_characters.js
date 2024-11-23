@@ -7,12 +7,22 @@ request(API_URL, (error, response, body) => {
     if (!error && response.statusCode == 200) {
         let json = JSON.parse(body);
         const charac_list = json.characters;  // Handle the response body
-        for (let i = 0; i < charac_list.length; i++) {
-            request(charac_list[i], (error1, response1, body1) => {
-                if (!error1 && response1.statusCode == 200) {
-                    console.log(JSON.parse(body1).name)
-                }
+        const promises = charac_list.map(url => {
+            return new Promise((resolve, reject) => {
+                request(url, (error1, response1, body1) => {
+                    if (!error1 && response1.statusCode == 200) {
+                        resolve(JSON.parse(body1).name);
+                    } else {
+                        reject(error1);
+                    }
+                });
+            });
+        });
+
+        Promise.all(promises)
+            .then(names => {
+                names.forEach(name => console.log(name));
             })
-        }
+            .catch(error => console.error(error));
     }
 })
