@@ -16,5 +16,14 @@ def rotate_2d_matrix(matrix):
     for i in range(n):
         for j in range(i, n):
             matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
+
+    def row_reverse(row):
+        """reverse a single row"""
+        # Reverse each row manually
+        left, right = 0, n - 1
+        while left < right:
+            row[left], row[right] = row[right], row[left]
+            left += 1
+            right -= 1
     for i in range(n):
-        matrix[i].reverse()
+        row_reverse(matrix[i])
