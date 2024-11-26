@@ -11,7 +11,7 @@ def rotate_2d_matrix(matrix):
     Args:
         matrix (list of list of int): The 2D matrix to rotate.
     """
-    n = len(matrix[0])
+    n = len(matrix)
 
     for i in range(n):
         for j in range(i, n):
