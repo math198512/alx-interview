@@ -29,5 +29,7 @@ def makeChange(coins, total):
         # Store and return result
         memo[remaining] = min_coins if min_coins != float('inf') else -1
         return memo[remaining]
-
-    return dp(total)
+    if total < 0 or total == 0:
+        return 0
+    else:
+        return dp(total)
