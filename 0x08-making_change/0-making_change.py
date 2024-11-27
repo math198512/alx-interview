@@ -3,33 +3,23 @@
 
 
 def makeChange(coins, total):
-    # Memoization cache
-    memo = {}
-
-    def dp(remaining):
-        # Base cases
-        if remaining < 0:
-            return -1
-        if remaining == 0:
-            return 0
-
-        # Check if result is already memoized
-        if remaining in memo:
-            return memo[remaining]
-
-        # Initialize min coins to a large value
-        min_coins = float('inf')
-
-        # Try each coin
-        for coin in coins:
-            result = dp(remaining - coin)
-            if result != -1:
-                min_coins = min(min_coins, result + 1)
-
-        # Store and return result
-        memo[remaining] = min_coins if min_coins != float('inf') else -1
-        return memo[remaining]
+    # Handle base cases
     if total < 0 or total == 0:
         return 0
-    else:
-        return dp(total)
+
+    # Initialize DP array with large values (representing impossibility)
+    # We use total + 1 as a "large" value that indicates impossibility
+    dp = [total + 1] * (total + 1)
+    dp[0] = 0  # 0 coins needed to make 0 total
+
+    # Iterate through all possible totals from 1 to target total
+    for i in range(1, total + 1):
+        # Try each coin denomination
+        for coin in coins:
+            # If coin is less than or equal to current total
+            if coin <= i:
+                # Update minimum coins needed
+                dp[i] = min(dp[i], dp[i - coin] + 1)
+
+    # Return result, using -1 if no solution found
+    return dp[total] if dp[total] <= total else -1
