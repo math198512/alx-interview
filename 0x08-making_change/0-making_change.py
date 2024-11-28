@@ -3,15 +3,21 @@
 
 
 def makeChange(coins, total):
-    if total < 0 or total == 0:
-        return 0
+    memo = {}
 
-    dp = [float('inf')] * (total + 1)
-    dp[0] = 0
+    def dfs(total):
+        if total == 0:
+            return 0
+        if total in memo:
+            return memo[total]
 
-    for i in range(1, total + 1):
+        res = 1e9
         for coin in coins:
-            if i - coin >= 0:
-                dp[i] = min(dp[i], dp[i - coin] + 1)
-
-    return dp[total] if dp[total] != float('inf') else -1
+            if total - coin >= 0:
+                res = min(res, 1 + dfs(total - coin))
+            
+        memo[total] = res
+        return res
+    
+    minCoins = dfs(total)
+    return -1 if minCoins >= 1e9 else minCoins
