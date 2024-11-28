@@ -3,7 +3,7 @@
 
 
 def makeChange(coins, total):
-    if total <= 0:
+    if total < 0 or total == 0:
         return 0
 
     dp = [float('inf')] * (total + 1)
