@@ -8,11 +8,11 @@ def makeChange(coins, total):
         return -1
 
     # Use dynamic programming with bottom-up approach
-    dp = [float('inf')] * (total + 1)
+    dp = [total + 1] * (total + 1)
     dp[0] = 0
 
     for coin in coins:
         for amount in range(coin, total + 1):
             dp[amount] = min(dp[amount], dp[amount - coin] + 1)
 
-    return dp[total] if dp[total] != float('inf') else -1
+    return dp[total] if dp[total] != total + 1 else -1
