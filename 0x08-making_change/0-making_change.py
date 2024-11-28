@@ -5,7 +5,7 @@
 def makeChange(coins, total):
     # Check for invalid inputs
     if total < 0 or not coins:
-        return -1
+        return 0
 
     # Use dynamic programming with bottom-up approach
     dp = [total + 1] * (total + 1)
