@@ -4,8 +4,8 @@
 
 def makeChange(coins, total):
     # Check for invalid inputs
-    if total < 0 or not coins:
-        return -1
+    if total < 0 or not coins or total == 0:
+        return 0
 
     # Use dynamic programming with bottom-up approach
     dp = [float('inf')] * (total + 1)
