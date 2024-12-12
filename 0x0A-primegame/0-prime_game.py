@@ -35,7 +35,7 @@ def isWinner(x, nums):
 
     primes = SieveOfEratosthenes(n)
     for _, n in zip(range(x), nums):
-        primesCount = len(list(filter(lambda x: x, primes[0: n])))
+        primesCount = len(list(filter(None, primes[0: n])))
         bensWins += primesCount % 2 == 0
         mariasWins += primesCount % 2 == 1
     if mariasWins == bensWins:
